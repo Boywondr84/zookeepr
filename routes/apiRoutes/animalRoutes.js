@@ -1,5 +1,5 @@
 const { filterByQuery, findById, createNewAnimal, validateAnimal } = require('../../lib/animals');
-const { animals } = require('../../data/animals.json');
+const { animals } = require('../../data/animals');
 const router = require('express').Router();
 
 router.get('/animals', (req, res) => {
@@ -15,7 +15,7 @@ router.get('/animals/:id', (req, res) => {
     if (result) {
         res.json(result);
     } else {
-        res.sendStatus(404);
+        res.send(404);
     }
 });
 

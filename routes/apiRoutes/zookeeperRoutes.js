@@ -1,5 +1,5 @@
 const { filterByQuery, findById, createNewZookeeper, validateZookeeper } = require('../../lib/zookeepers');
-const { zookeepers } = require('../../data/zookeepers.json');
+const { zookeepers } = require('../../data/zookeepers');
 // const { response } = require('express');
 const router = require('express').Router();
 
@@ -16,7 +16,7 @@ router.get('/zookeepers/:id', (req, res) => {
     if(result) {
         res.json(result);
     } else {
-        res.json(404);
+        res.send(404);
     }
 });
 

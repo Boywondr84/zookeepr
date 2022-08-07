@@ -46,6 +46,9 @@ const handleAnimalFormSubmit = event => {
   });
 };
 
+const handleZookeeperFormSubmit = event => {
+  event.preventDefault();
+
 // get zookeeper data and organize it
 const name = $zookeeperForm.querySelector('[name = "zookeeper-name"]').value;
 const age = $zookeeperForm.querySelector('[name = "age"]').value;
@@ -72,6 +75,7 @@ fetch('/api/zookeepers', {
     console.log(postResponse);
     alert("Thank you for adding a zookeeper.");
   });
+};
 
-// $zookeeperForm.addEventListener('submit', handleZookeeperFormSubmit);
+$zookeeperForm.addEventListener('submit', handleZookeeperFormSubmit);
 $animalForm.addEventListener('submit', handleAnimalFormSubmit);
