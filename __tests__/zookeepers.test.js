@@ -4,7 +4,7 @@ const {
     findById,
     createNewZookeeper,
     validateZookeeper,
-} = require('../lib/zookeepers');
+} = require('../lib/zookeepers.js');
 
 const { zookeepers } = require('../data/zookeepers.json');
 const { hasUncaughtExceptionCaptureCallback } = require("process");
@@ -25,13 +25,13 @@ test("filters by query", () => {
         {
             id: "12",
             name: "Bob",
-            age: "50",
+            age: 50,
             favoriteAnimal: "giraffe",
         },
         {
             id: "15",
             name: "Jim",
-            age: "61",
+            age: 61,
             favoriteAnimal: "chimpanzee",
         },
     ];
@@ -45,13 +45,13 @@ test("finds a zookeeper id", () => {
         {
             id: "12",
             name: "Bob",
-            age: "50",
+            age: 50,
             favoriteAnimal: "giraffe",
         },
         {
             id: "15",
             name: "Jim",
-            age: "61",
+            age: 61,
             favoriteAnimal: "chimpanzee",
         }, 
     ];
@@ -61,18 +61,20 @@ test("finds a zookeeper id", () => {
     expect(result.name).toBe("Bob");
 });
 
-test("validate zookeeper", () => {
+test("validate name", () => {
     const zookeeper = {
-            id: "15",
-            name: "Jim",
-            age: "61",
-            favoriteAnimal: "chimpanzee",
+            id: "12",
+            name: "Bob",
+            age: 50,
+            favoriteAnimal: "giraffe",
         };
     const invalidZookeeper = {
             id: "15",
-            name: "Jim",
-            age: "61",
+            name: "John",
+            age: '61',
+            favoriteAnimal: "chimpanzee",
     };
+    
     const result = validateZookeeper(zookeeper);
     const result2 = validateZookeeper(invalidZookeeper);
 
